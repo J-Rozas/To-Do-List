@@ -23,6 +23,9 @@ function App() {
     <h1>
       ToDo's
     </h1>
+    <form>
+      <input type='text' placeholder='Type in new task' name='next-task' value={''}></input>
+    </form>
     <ul>
       { taskNodes }
     </ul>
