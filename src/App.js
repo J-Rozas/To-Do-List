@@ -13,10 +13,14 @@ function App() {
   const taskNodes = tasks.map((task, index) => {
     return (
       <li key={index}>
-        {task.name}
+        {task.name};
       </li>
     )
   });
+
+  const [newTask, setNewTask] = useState('');
+
+  const handleTaskInput = (event) => setNewTask(event.target.value);
 
   return (
     <>
@@ -24,7 +28,9 @@ function App() {
       ToDo's
     </h1>
     <form>
-      <input type='text' placeholder='Type in new task' name='next-task' value={''}></input>
+      <input type='text' placeholder='Type in new task' name='next-task' onChange={handleTaskInput} value={newTask}></input>
+      <label htmlFor='new-task'></label>
+      <input type='submit' value='Add task'></input>
     </form>
     <ul>
       { taskNodes }
