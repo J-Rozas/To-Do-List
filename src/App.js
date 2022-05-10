@@ -1,4 +1,3 @@
-import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 import React, { useState } from 'react'
 import './App.css';
 
@@ -13,10 +12,9 @@ function App() {
 
   const taskNodes = tasks.map((task, index) => {
     return (
-      <li key={index}>
+      <li key={index} className={task.priority === 'high' ? 'high' : 'low'}>
         {task.name}
-        <br></br>
-        {task.priority}
+
       </li>
     )
   });
@@ -47,7 +45,7 @@ function App() {
     </h1>
     <form onSubmit={saveNewTask}>
     {/* Text input */}
-      <input type='text' placeholder='Type in new task' name='next-task' onChange={handleTaskInput} value={newTask}></input>
+      <input type='text' placeholder='Type in new task' name='next-task' onChange={handleTaskInput} value={newTask} id='text-area'></input>
       <label htmlFor='new-task'></label>
 
     <span onChange={handlePriorityInput}>
@@ -59,7 +57,7 @@ function App() {
       <input type='radio' name='priority' value='low'></input>
       <label htmlFor='low'>Low</label>
     </span>
-    
+
     {/* First radio */}
     {/* <input onChange={handlePriorityInput} type='radio' name='priority' value='high' defaultChecked></input>
     <label htmlFor='high'>High</label> */}
@@ -70,7 +68,7 @@ function App() {
 
 
     {/* Submit button */}
-      <input type='submit' value='Add task'></input>
+      <input type='submit' value='Add task' id='add-task'></input>
     </form>
     <ul>
       { taskNodes }
